@@ -100,15 +100,16 @@
     }
 
     textarea {
-      width: 100%;
-      max-width: 700px;
-      height: 100px;
-      padding: 10px;
+      width: 95%;         /* almost full width of section */
+      max-width: none;    /* no width limit */
+      height: 150px;      /* bigger: a few lines */
+      padding: 12px;
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;
       resize: vertical;
       margin-bottom: 10px;
+      box-sizing: border-box; /* ensures padding doesn't shrink width */
     }
 
     input[type="email"] {
@@ -153,7 +154,7 @@
   </header>
 
   <section id="problem">
-    <IMG SRC="ManAnswersTxt3.png" width="60%">
+    <IMG SRC="Problem4.png" width="50%">
     <p>
       Workplace communication is full of invisible rules. For many neurodivergent professionals, it’s not ability that holds them back—it’s misunderstandings about tone, timing, or expectations.
     </p>
@@ -166,7 +167,7 @@
   </section>
 
   <section id="solution">
-    <IMG SRC="ManideaTxt2.png" width="60%">
+    <IMG SRC="Solution2.png" width="50%">
 
     <p><strong>WorkWise</strong> is your real-time AI-powered communication assistant.</p>
     <ul>
@@ -179,7 +180,7 @@
   </section>
 
   <section id="how">
-    <IMG SRC="ManAnswersTxt4.png" width="60%">
+    <IMG SRC="Foundit2.png" width="50%">
     <ol>
       <li>Paste your message or meeting transcript</li>
       <li>Get suggestions in real time</li>
@@ -219,13 +220,15 @@
     </table>
   </section>
 
-  <section id="demo">
-    <h2>Try a Demo</h2>
-    <p>Paste a work message below and see how WorkWise might suggest improving clarity or tone.</p>
-    <form>
-      <textarea placeholder="Paste your work message here..."></textarea><br/>
-      <button type="button">Get Suggestions</button>
-    </form><form><input type="text"></form>
+<section id="translator">
+  <h2>Corporate → Human Translator</h2>
+  <p style="text-align:center;">Turning buzzwords into plain English since… about 3 seconds ago.</p>
+
+  <!-- Big input and output boxes -->
+  <form style="text-align:center; margin-bottom: 30px;">
+    <textarea placeholder="Translate this..." style="width:80%;height:80px;font-size:1rem;padding:12px;border:1px solid #ccc;border-radius:6px;margin-bottom:15px;display:block;margin-left:auto;margin-right:auto;"></textarea>
+    <textarea placeholder="...to plain English:" style="width:80%;height:80px;font-size:1rem;padding:12px;border:1px solid #ccc;border-radius:6px;display:block;margin-left:auto;margin-right:auto;"></textarea>
+  </form>
 
   </section>
 
