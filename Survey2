@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Survey — Radio Button (Likert) Template</title>
+  <style>
+    :root{
+      --bg:#0f172a;        /* slate-900 */
+      --card:#0b1226;      /* deep panel */
+      --ink:#e5e7eb;       /* text */
+      --muted:#9ca3af;     /* muted text */
+      --accent:#60a5fa;    /* blue-400 */
+      --ring:#3b82f6;      /* blue-500 */
+      --ok:#22c55e;        /* green-500 */
+      --warn:#f59e0b;      /* amber-500 */
+      --radius:16px;
+      --shadow:0 10px 30px rgba(2,6,23,.45);
+    }
+    html,body{height:100%;}
+    body{
+      margin:0; background:
+        radial-gradient(1200px 600px at 10% -10%, #123, transparent 60%),
+        radial-gradient(1000px 500px at 110% 10%, #122, transparent 60%),
+        linear-gradient(180deg, #0a0f1f 0%, #0d1325 100%);
+      color:var(--ink); font:15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    .wrap{max-width:1100px; margin:40px auto; padding:24px;}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow); border-radius:var(--radius); overflow:hidden}
+    header{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:20px 24px; border-bottom:1px solid rgba(255,255,255,.08)}
+    h1{margin:0; font-size:20px; font-weight:700; letter-spacing:.2px}
+    .sub{color:var(--muted); font-size:13px}
+
+    .toolbar{display:flex; flex-wrap:wrap; gap:10px}
+    .btn{appearance:none; border:1px solid rgba(255,255,255,.14); background:#0c152b; color:var(--ink); padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600; transition:.15s transform ease, .15s background ease;}
+    .btn:hover{background:#132142}
+    .btn:active{transform:translateY(1px)}
+
+    form{padding:18px 20px 10px}
+    .meta{display:flex; gap:16px; flex-wrap:wrap; margin:0 0 14px}
+    .meta .field{display:flex; gap:8px; align-items:center; background:#0a1226; border:1px solid rgba(255,255,255,.08); padding:10px 12px; border-radius:12px}
+    .meta input[type="text"]{background:transparent; border:0; outline:0; color:var(--ink)}
+
+    /* Likert grid */
+    .grid{display:grid; grid-template-columns: 1.2fr repeat(5, minmax(80px, 1fr)); align-items:stretch; gap:0; border:1px solid rgba(255,255,255,.08); border-radius:14px; overflow:hidden}
+    .grid .cell{padding:12px 14px; border-bottom:1px solid rgba(255,255,255,.06)}
+    .grid .cell.head{background:rgba(255,255,255,.04); font-weight:700; font-size:13px; color:#c8d2e3}
+    .grid .prompt{font-weight:600}
+    .grid .row:nth-child(even) .cell{background:rgba(255,255,255,.02)}
+    /* Header stacked labels */
+    .cell.head .num{display:block; font-size:16px; font-weight:700; line-height:1.1}
+    .cell.head .txt{display:block; font-size:11px; color:var(--muted); margin-top:2px}
+
+    /* Radio group styling */
+    .opt{display:flex; justify-content:center; align-items:center}
+    .opt input{position:absolute; opacity:0;}
+    .opt label{display:inline-flex; align-items:center; justify-content:center; min-height:36px; width:100%; border:1px dashed transparent; border-radius:10px; cursor:pointer; user-select:none;}
+    .opt input:focus-visible + label{outline:3px solid var(--ring); outline-offset:2px}
+    .opt input:hover + label{background:rgba(99,102,241,.08)}
+    .opt input:checked + label{background:rgba(96,165,250,.18); border-color:rgba(96,165,250,.3)}
+
+    .footer{display:flex; justify-content:space-between; align-items:center; padding:16px 20px}
+    .progress{font-size:13px; color:var(--muted)}
+    .req{color:var(--warn)}
+
+    @media (max-width:920px){
+      .grid{grid-template-columns: 1fr;}
+      .grid .cell.head{display:none}
+      .opt{justify-content:flex-start}
+      .opt label{justify-content:flex-start; padding-left:10px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div>
+          <h1 contenteditable title="Click to edit the survey title">Untitled Survey</h1>
+          <div class="sub" contenteditable title="Click to edit the survey description">Replace this description with what your survey measures. The questions below are placeholders.</div>
+        </div>
+        <div class="toolbar">
+          <button class="btn" type="button" id="btnJSON">Export JSON</button>
+          <button class="btn" type="button" id="btnCSV">Export CSV</button>
+          <button class="btn" type="button" onclick="window.print()">Print</button>
+          <button class="btn" type="reset" form="survey">Reset</button>
+        </div>
+      </header>
+
+      <form id="survey" autocomplete="off">
+        <div class="meta">
+          <div class="field"><label for="respName">Name</label><input id="respName" name="respName" type="text" placeholder="Optional"/></div>
+          <div class="field"><label for="respEmail">Email</label><input id="respEmail" name="respEmail" type="text" placeholder="Optional"/></div>
+        </div>
+
+        <!-- Likert Grid Header -->
+        <div class="grid" role="table" aria-label="Likert scale survey">
+          <div class="cell head" role="columnheader">Question</div>
+          <div class="cell head" role="columnheader" title="0 = None"><div class="num">0</div><div class="txt">None</div></div>
+          <div class="cell head" role="columnheader" title="1 = Mild"><div class="num">1</div><div class="txt">Mild</div></div>
+          <div class="cell head" role="columnheader" title="2 = Mild"><div class="num">2</div><div class="txt">Mild</div></div>
+          <div class="cell head" role="columnheader" title="3 = Moderate"><div class="num">3</div><div class="txt">Moderate</div></div>
+          <div class="cell head" role="columnheader" title="4 = Severe"><div class="num">4</div><div class="txt">Severe</div></div>
+
+          <!-- QUESTION ROWS (20 placeholders) -->
+          <template id="rowTemplate">
+            <fieldset class="row" style="display:contents" aria-labelledby="{id}-legend">
+              $1<div class="cell opt"><input required id="{id}-o0" name="{id}" type="radio" value="0"><label for="{id}-o0" aria-label="None">0</label></div>
+              <div class="cell opt"><input id="{id}-o1" name="{id}" type="radio" value="1"><label for="{id}-o1" aria-label="Mild">1</label></div>
+              <div class="cell opt"><input id="{id}-o2" name="{id}" type="radio" value="2"><label for="{id}-o2" aria-label="Mild">2</label></div>
+              <div class="cell opt"><input id="{id}-o3" name="{id}" type="radio" value="3"><label for="{id}-o3" aria-label="Moderate">3</label></div>
+              <div class="cell opt"><input id="{id}-o4" name="{id}" type="radio" value="4"><label for="{id}-o4" aria-label="Severe">4</label></div></fieldset>
+          </template>
+
+          <!-- rows will be injected here by JS -->
+        </div>
+
+        <div class="footer">
+          <div class="progress"><span id="done">0</span>/<span id="total">0</span> answered • <span class="req">* All items required</span></div>
+          <button class="btn" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // ===== Config =====
+    const NUMBER_OF_QUESTIONS = 20; // change this to add/remove placeholders
+
+    // ===== Build Rows =====
+    const grid = document.querySelector('.grid');
+    const tpl = document.getElementById('rowTemplate').innerHTML;
+
+    for(let i=1;i<=NUMBER_OF_QUESTIONS;i++){
+      const id = `q${i}`;
+      const html = tpl.replaceAll('{id}', id).replaceAll('{n}', i);
+      grid.insertAdjacentHTML('beforeend', html);
+    }
+
+    // ===== Progress Counter =====
+    const total = document.getElementById('total');
+    const done = document.getElementById('done');
+    total.textContent = NUMBER_OF_QUESTIONS;
+
+    function updateProgress(){
+      const answered = new Set();
+      for(let i=1;i<=NUMBER_OF_QUESTIONS;i++){
+        const name = `q${i}`;
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        if(checked) answered.add(name);
+      }
+      done.textContent = answered.size;
+    }
+    document.getElementById('survey').addEventListener('change', updateProgress);
+    updateProgress();
+
+    // ===== Form Submit (collect results) =====
+    const form = document.getElementById('survey');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = collectResults();
+      alert('Thanks! Your responses were collected in-memory. Use Export JSON/CSV to download.');
+      console.log('Survey Results:', data);
+    });
+
+    function collectResults(){
+      const fd = new FormData(form);
+      const rows = [];
+      for(let i=1;i<=NUMBER_OF_QUESTIONS;i++){
+        const id = `q${i}`;
+        const legendEl = document.getElementById(`${id}-legend`);
+        const question = legendEl ? legendEl.textContent.trim() : `Question ${i}`;
+        const answer = fd.get(id);
+        rows.push({ number: i, id, question, answer });
+      }
+      return {
+        title: document.querySelector('h1').textContent.trim(),
+        description: document.querySelector('.sub').textContent.trim(),
+        respondent: { name: fd.get('respName')||'', email: fd.get('respEmail')||'' },
+        scale: {"0":"None","1":"Mild","2":"Mild","3":"Moderate","4":"Severe"},
+        submittedAt: new Date().toISOString(),
+        responses: rows
+      };
+    }
+
+    // ===== Export Helpers =====
+    function download(filename, content, type='application/json'){
+      const blob = new Blob([content], {type});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
+    }
+
+    document.getElementById('btnJSON').addEventListener('click', ()=>{
+      const data = collectResults();
+      download('survey-results.json', JSON.stringify(data, null, 2));
+    });
+
+    document.getElementById('btnCSV').addEventListener('click', ()=>{
+      const data = collectResults();
+      const header = ['number','id','question','answer'];
+      const rows = data.responses.map(r=>(
+        [r.number, r.id, '"'+r.question.replaceAll('"','""')+'"', r.answer]
+      ));
+      const csv = [header.join(','), ...rows.map(r=>r.join(','))].join('\n');
+      download('survey-results.csv', csv, 'text/csv');
+    });
+  </script>
+</body>
+</html>
