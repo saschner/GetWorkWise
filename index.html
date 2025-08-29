@@ -3,12 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  .site-title
-  {
-  /* Scale between 180px (phones) and 560px (desktops) */
-  inline-size: clamp(180px, 40vw, 560px);
-  margin-inline: auto;            /* center */
-  } 
   <style>
     body {
       margin: 0;
@@ -147,8 +141,15 @@
 
   <header>
     <div class="site-title">
-  <img src="/assets/locallyconvert-logo.png" alt="LocallyConvert — Image → CSV">
-    </div>
+  <img
+    src="/assets/locallyconvert-logo-560.png"           /* default */
+    srcset="/assets/locallyconvert-logo-560.png 1x,
+            /assets/locallyconvert-logo-1120.png 2x"    /* crisp on HiDPI */
+    sizes="(max-width: 480px) 180px,
+           (max-width: 1024px) 40vw,
+           560px"
+    alt="LocallyConvert — Image → CSV">
+</div>
     <p>Your communication ally in the workplace.</p>
     <nav>
       <a href="#problem">Why</a>
@@ -235,6 +236,7 @@
 </CLASS>
 </body>
 </html>
+
 
 
 
