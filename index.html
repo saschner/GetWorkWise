@@ -3,195 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WorkWise — Neurodivergent Support</title>
+
   <style>
-    body {
-      margin: 0;
+    :root{
+      --brand:#004b6b;
+      --ink:#222;
+      --bg:#f9f9f9;
+      --link:#aee8ff;
+      --card:#f9fcff;
+      --border:#dfeaf6;
+      --shadow:0 6px 20px rgba(28,53,84,.08);
+      --radius:16px;
+      --content:800px;
+    }
+
+    /* Base */
+    html,body{margin:0}
+    body{
       font-family: "Segoe UI", sans-serif;
       line-height: 1.6;
-      color: #222;
-      background-color: #f9f9f9;
+      color: var(--ink);
+      background: var(--bg);
     }
-.logo {
-  max-width: 350px;
-}
-    header {
-      background-color: #004b6b;
-      color: white;
+
+    /* Header */
+    header{
+      background: var(--brand);
+      color: #fff;
       padding: 20px;
       text-align: center;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .site-title{
+      inline-size: clamp(180px, 40vw, 560px);
+      margin-inline: auto;
     }
-
-    nav {
-      margin-top: 10px;
+    .site-title img{
+      display:block;
+      inline-size:100%;
+      height:auto;
     }
+    header p{margin: 8px 0 0}
 
-    nav a {
-      color: #aee8ff;
+    /* Nav */
+    nav{margin-top:10px}
+    nav a{
+      color: var(--link);
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
 
-    section {
-      max-width: 800px;
+    /* Sections */
+    section{
+      max-width: var(--content);
       margin: 40px auto;
       padding: 0 20px;
     }
-
-    h2 {
-      color: #004b6b;
+    h2{
+      color: var(--brand);
       text-align: center;
+      margin-top: 0;
     }
 
- .cta{
-  text-align:center;
-  margin:40px auto;
-  max-width:800px;
-  padding:0 20px;
-}
-.cta a{
-  display:inline-block;
-  margin:10px auto;
-}
-   footer {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-size: 0.9rem;
-  background-color: #eee;
-  color: #666;
-  text-align: center;
-}
-
-    /* Corporate Translator table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+    /* CTA (unused here but fixed) */
+    .cta{
+      text-align:center;
+      margin:40px auto;
+      max-width:var(--content);
+      padding:0 20px;
+    }
+    .cta a{
+      display:inline-block;
+      margin:10px auto;
     }
 
-    th, td {
-      padding: 15px;
-      border-bottom: 1px solid #ccc;
-      text-align: left;
+    /* Card box */
+    .card{
+      max-width: 63ch;
+      margin: 40px auto;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
-    th {
-      background-color: #004b6b;
-      color: white;
-    }
+    /* Table */
+    table{width:100%; border-collapse: collapse; margin-top:20px}
+    th, td{padding: 15px; border-bottom:1px solid #ccc; text-align:left}
+    th{background: var(--brand); color:#fff}
+    tr:nth-child(even){background:#f2f2f2}
 
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    /* Demo and Waitlist form */
-    form {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    textarea {
-      width: 95%;         /* almost full width of section */
-      max-width: none;    /* no width limit */
-      height: 150px;      /* bigger: a few lines */
+    /* Forms */
+    form{margin-top:30px; text-align:center}
+    textarea{
+      width: 95%;
+      max-width: none;
+      height: 150px;
       padding: 12px;
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;
       resize: vertical;
       margin-bottom: 10px;
-      box-sizing: border-box; /* ensures padding doesn't shrink width */
+      box-sizing: border-box;
+      display:block;
+      margin-left:auto; margin-right:auto;
+    }
+    input[type="email"]{
+      width:70%; max-width:400px;
+      padding:10px; font-size:1rem;
+      border:1px solid #ccc; border-radius:6px; margin-right:10px;
+    }
+    button{
+      background: var(--brand); color:#fff;
+      padding:12px 24px; border:none; border-radius:6px;
+      font-size:1rem; cursor:pointer; margin-top:5px;
+    }
+    button:hover{background:#003a53}
+
+    /* Footer */
+    footer{
+      max-width: var(--content);
+      margin: 0 auto 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      background: #eee;
+      color: #666;
+      text-align: center;
+      border-radius: 8px;
     }
 
-    input[type="email"] {
-      width: 70%;
-      max-width: 400px;
-      padding: 10px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-right: 10px;
-    }
-
-    button {
-      background-color: #004b6b;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 5px;
-    }
-
-    button:hover {
-      background-color: #003a53;
-    }
-.site-title{
-  inline-size: clamp(180px, 40vw, 560px);
-  margin-inline: auto;
-}
-</style>
+    /* Helpers */
+    .center-links{ text-align:center }
+    .center-links img{ vertical-align: middle }
+    .center-links a{ margin-left:6px }
+  </style>
 </head>
 <body>
 
- <header>
-  <div class="site-title">
-    <img
-      src="./locallyconvert-logo-560.png"
-      srcset="./locallyconvert-logo-560.png 1x, ./locallyconvert-logo-1120.png 2x"
-      sizes="(max-width: 480px) 180px, (max-width: 1024px) 40vw, 560px"
-      alt="LocallyConvert — Image to CSV"
-      width="560"
-      height="auto"
-      style="max-width:100%;height:auto;display:block;margin:0 auto;"
-    />
-  </div>
-  <p>Your communication ally in the workplace.</p>
-  <nav>
-    <a href="#problem">Why</a>
-    <a href="#solution">What</a>
-    <a href="#how">How</a>
-    <a href="#translator">Translator</a>
-    <a href="#demo">Demo</a>
-    <a href="#cta">Start</a>
-  </nav>
-</header>
-<P align="center"><IMG SRC="GoldIdeaTINY.png"><a href="Survey4.html">ADHD Survey Based on the Adult D-RS-IV Questionnaire</A><br>
-<IMG SRC="GoldIdeaTINY.png"><a href="Survey4.html">Autism Spectrum Disorder Survey Based on the Adult Autism Questionnaire</A><BR>
-<IMG SRC="GoldIdeaTINY.png"><a href="Survey4.html">Dyslexia Survey Based on the Adult Dyslexia Questionnaire</A></P>
-<!-- Neurodivergent Definition Box -->
-<section style="max-width: 63ch;margin:40px auto;padding:24px;background:#f9fcff;
-                border:1px solid #dfeaf6;border-radius:16px;box-shadow:0 6px 20px rgba(28,53,84,.08);">
-  <h2 style="margin-top:0;color:#1d2a38;font-size:1.6em;">What We Mean by <em>Neurodivergent</em></h2>
-  <p style="line-height:1.6;color:#24364a;font-size:1.05em;">
-    The term <strong>neurodivergent</strong> was first used to describe people on the Autism Spectrum. 
-    Over time, the definition has grown to include those with <strong>ADHD/ADD</strong>, 
-    <strong>dyslexia</strong>, <strong>dyspraxia</strong>, <strong>Tourette’s</strong>, and other cognitive 
-    differences that each affect how they process the world.
-  </p></div></section>
- <section id="problem">
-    <IMG SRC="Probq2.png" width="50%">
+  <header>
+    <div class="site-title">
+      <!-- IMPORTANT:
+           If the file is in /public/, use src="/locallyconvert-logo-560.png"
+           If it sits next to this HTML, use src="./locallyconvert-logo-560.png"
+      -->
+      <img
+        src="/assets/locallyconvert-logo-560.png"
+        alt="Get WorkWise — Neurodivergent Support for the Workplace"
+      />
+    </div>
+
+    <p>Your communication ally in the workplace.</p>
+
+    <nav>
+      <a href="#problem">Why</a>
+      <a href="#solution">What</a>
+      <a href="#how">How</a>
+      <a href="#translator">Translator</a>
+      <a href="#demo">Demo</a>
+      <a href="#cta">Start</a>
+    </nav>
+  </header>
+
+  <p class="center-links">
+    <img src="GoldIdeaTINY.png" alt="" />
+    <a href="Survey4.html">ADHD Survey Based on the Adult D-RS-IV Questionnaire</a><br>
+    <img src="GoldIdeaTINY.png" alt="" />
+    <a href="Survey4.html">Autism Spectrum Disorder Survey Based on the Adult Autism Questionnaire</a><br>
+    <img src="GoldIdeaTINY.png" alt="" />
+    <a href="Survey4.html">Dyslexia Survey Based on the Adult Dyslexia Questionnaire</a>
+  </p>
+
+  <!-- Neurodivergent Definition Box -->
+  <section class="card">
+    <h2>What We Mean by <em>Neurodivergent</em></h2>
+    <p style="line-height:1.6;color:#24364a;font-size:1.05em;">
+      The term <strong>neurodivergent</strong> was first used to describe people on the Autism Spectrum.
+      Over time, the definition has grown to include those with <strong>ADHD/ADD</strong>,
+      <strong>dyslexia</strong>, <strong>dyspraxia</strong>, <strong>Tourette’s</strong>, and other cognitive
+      differences that each affect how they process the world.
+    </p>
+  </section>
+
+  <section id="problem">
+    <img src="Probq2.png" width="50%" alt="">
     <p>
-      Workplace communication is full of invisible rules. For many neurodivergent professionals, <BR>it’s not ability that holds them back—it’s misunderstandings about tone, timing, or expectations.
+      Workplace communication is full of invisible rules. For many neurodivergent professionals,
+      it’s not ability that holds them back—it’s misunderstandings about tone, timing, or expectations.
     </p>
     <ul>
       <li>Emails misread as blunt or cold</li>
       <li>Struggles with self-advocacy</li>
       <li>Overthinking every message</li>
-
     </ul>
   </section>
 
   <section id="solution">
-    <IMG SRC="titans_2_spreading_knowledge_ideas_1.png" width="60%">
-
+    <img src="titans_2_spreading_knowledge_ideas_1.png" width="60%" alt="">
     <p><strong>WorkWise</strong> is your real-time AI-powered communication assistant.</p>
     <ul>
       <li>Suggests softer or clearer phrasing</li>
@@ -199,29 +209,27 @@
       <li>Highlights miscommunication risks in meeting transcripts</li>
       <li>Helps you follow up with confidence</li>
     </ul>
-    <p>Built for neurodivergent professionals. Useful for everyone.</p><BR>
-  <IMG SRC="titans_4_meet_up_2.png" width="40%">
-</section>
+    <p>Built for neurodivergent professionals. Useful for everyone.</p>
+    <br>
+    <img src="titans_4_meet_up_2.png" width="40%" alt="">
+  </section>
 
   <section id="how">
-<P><ol>
+    <ol>
       <li>Paste your message or meeting transcript</li>
       <li>Get suggestions in real time</li>
       <li>Learn and grow with every interaction</li>
     </ol>
-    Slack and Otter integrations coming soon.</p>
+    <p>Slack and Otter integrations coming soon.</p>
   </section>
 
-<section id="translator">
-  <h2>Corporate → Human Translator</h2>
-  <p style="text-align:center;">Turning buzzwords into plain English since… about 3 seconds ago.</p>
-
-  <!-- Big input and output boxes -->
-  <form style="text-align:center; margin-bottom: 30px;">
-    <textarea placeholder="Translate this..." style="width:80%;height:80px;font-size:1rem;padding:12px;border:1px solid #ccc;border-radius:6px;margin-bottom:15px;display:block;margin-left:auto;margin-right:auto;"></textarea>
-    <textarea placeholder="...to plain English:" style="width:80%;height:80px;font-size:1rem;padding:12px;border:1px solid #ccc;border-radius:6px;display:block;margin-left:auto;margin-right:auto;"></textarea>
-  </form>
-
+  <section id="translator">
+    <h2>Corporate → Human Translator</h2>
+    <p style="text-align:center;">Turning buzzwords into plain English since… about 3 seconds ago.</p>
+    <form>
+      <textarea placeholder="Translate this..."></textarea>
+      <textarea placeholder="...to plain English:"></textarea>
+    </form>
   </section>
 
   <section id="waitlist">
@@ -232,13 +240,24 @@
       <button type="submit">Join Waitlist</button>
     </form>
   </section>
+
   <footer class="footer">
-    &copy; 2025 WorkWise – Built with purpose and care<br/>
-    Contact: hello@getworkwise.tech
+    &copy; 2025 WorkWise – Built with purpose and care. Contact: hello@getworkwise.tech
   </footer>
-</CLASS>
+
+  <!-- Optional: add HiDPI once confirmed the 2x file exists at EXACT path/case
+  <script>
+    // If you prefer srcset after it works:
+    // document.querySelector('.site-title img').setAttribute(
+    //   'srcset',
+    //   '/assets/locallyconvert-logo-560.png 1x, /assets/locallyconvert-logo-1120.png 2x'
+    // );
+  </script>
+  -->
 </body>
 </html>
+
+
 
 
 
