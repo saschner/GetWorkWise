@@ -29,11 +29,20 @@
       padding:20px;
       text-align:center;
     }
-   .site-title {
-  inline-size: clamp(200px, 95vw, 560px);
-  margin-inline: auto;
-}
-    .site-title img{ display:block; inline-size:100%; height:auto; }
+    /* Ensure no container width constraint */
+    .site-title{ width:auto; max-width:none; margin-inline:auto; }
+    /* IMAGE: desktop cap, but allow full-bleed (minus padding) on phones */
+    #logo{
+      display:block;
+      height:auto;
+      width:min(96vw, 560px);
+      margin:0 auto;
+    }
+    /* On small phones, reduce header padding slightly and allow nearly full width */
+    @media (max-width:480px){
+      header{ padding-left:12px; padding-right:12px; }
+      #logo{ width:min(98vw, 560px); }
+    }
     header p{ margin:8px 0 0; }
     nav{ margin-top:10px; }
     nav a{ color:var(--link); margin:0 15px; text-decoration:none; font-weight:bold; }
@@ -60,12 +69,14 @@
   </style>
 </head>
 <body>
-  <header>
+  <header id="hdr">
     <div class="site-title">
-      <!-- Robust image tag with multi-path fallback and optional HiDPI swap when available -->
+      <!-- Use logo.png (560px wide). For retina, add logo@2x.png at 1120px. -->
       <img id="logo"
-           src="locallyconvert-logo-560.png"
-           alt="Get WorkWise — Neurodivergent Support for the Workplace" />
+           src="logo.png"
+           srcset="logo.png 560w, logo@2x.png 1120w"
+           sizes="(max-width:600px) 100vw, 560px"
+           alt="LocallyConvert — Image to CSV">
     </div>
     <p>Your communication ally in the workplace.</p>
     <nav>
@@ -157,45 +168,23 @@
   </footer>
 
   <script>
-    // Fallbacks for different possible image locations (no /public folder)
+    // Ensure the logo fills the header width minus padding, on load and resize.
     (function(){
-      const paths = [
-        "locallyconvert-logo-560.png",
-        "./locallyconvert-logo-560.png",
-        "assets/locallyconvert-logo-560.png",
-        "./assets/locallyconvert-logo-560.png",
-        "/assets/locallyconvert-logo-560.png"
-      ];
-      const hidpi = [
-        "locallyconvert-logo-1120.png",
-        "./locallyconvert-logo-1120.png",
-        "assets/locallyconvert-logo-1120.png",
-        "./assets/locallyconvert-logo-1120.png",
-        "/assets/locallyconvert-logo-1120.png"
-      ];
-      const img = document.getElementById('logo');
-
-      // Try each path until one loads
-      function tryPaths(list, cb){
-        if(!list.length) return cb(false);
-        const url = list.shift();
-        const test = new Image();
-        test.onload = function(){ cb(url); };
-        test.onerror = function(){ tryPaths(list, cb); };
-        test.src = url + "?v=" + Date.now(); // bust cache
+      function fitLogo(){
+        var hdr = document.getElementById('hdr');
+        var logo = document.getElementById('logo');
+        if(!hdr || !logo) return;
+        var style = getComputedStyle(hdr);
+        var padLeft = parseFloat(style.paddingLeft) || 0;
+        var padRight = parseFloat(style.paddingRight) || 0;
+        var avail = window.innerWidth - (padLeft + padRight);
+        // Don't exceed the natural max (560 CSS px), but let it fill on phones.
+        var cssWidth = Math.min(avail * 0.98, 560);
+        logo.style.width = cssWidth + 'px';
       }
-
-      // 1) Find a working 560 path
-      tryPaths(paths.slice(), function(url){
-        if(url) img.src = url;
-
-        // 2) If HiDPI, try to swap to a valid 1120 asset
-        if(window.devicePixelRatio && window.devicePixelRatio >= 1.5){
-          tryPaths(hidpi.slice(), function(hd){
-            if(hd) img.src = hd;
-          });
-        }
-      });
+      window.addEventListener('resize', fitLogo);
+      window.addEventListener('orientationchange', fitLogo);
+      window.addEventListener('DOMContentLoaded', fitLogo);
     })();
   </script>
 </body>
