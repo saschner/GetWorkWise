@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WorkWise — Neurodivergent Support</title>
-
   <style>
     :root{
       --brand:#004b6b;
@@ -17,8 +16,6 @@
       --radius:16px;
       --content:800px;
     }
-
-    /* Base */
     html,body{margin:0}
     body{
       font-family: "Segoe UI", sans-serif;
@@ -26,137 +23,48 @@
       color: var(--ink);
       background: var(--bg);
     }
-
-    /* Header */
     header{
       background: var(--brand);
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    .site-title{
-      inline-size: clamp(180px, 40vw, 560px);
-      margin-inline: auto;
-    }
-    .site-title img{
-      display:block;
-      inline-size:100%;
-      height:auto;
-    }
-    header p{margin: 8px 0 0}
-
-    /* Nav */
-    nav{margin-top:10px}
-    nav a{
-      color: var(--link);
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* Sections */
-    section{
-      max-width: var(--content);
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h2{
-      color: var(--brand);
-      text-align: center;
-      margin-top: 0;
-    }
-
-    /* CTA (unused here but fixed) */
-    .cta{
+      color:#fff;
+      padding:20px;
       text-align:center;
-      margin:40px auto;
-      max-width:var(--content);
-      padding:0 20px;
     }
-    .cta a{
-      display:inline-block;
-      margin:10px auto;
-    }
-
-    /* Card box */
+    .site-title{ inline-size:clamp(180px,40vw,560px); margin-inline:auto; }
+    .site-title img{ display:block; inline-size:100%; height:auto; }
+    header p{ margin:8px 0 0; }
+    nav{ margin-top:10px; }
+    nav a{ color:var(--link); margin:0 15px; text-decoration:none; font-weight:bold; }
+    section{ max-width:var(--content); margin:40px auto; padding:0 20px; }
+    h2{ color:var(--brand); text-align:center; margin-top:0; }
     .card{
-      max-width: 63ch;
-      margin: 40px auto;
-      padding: 24px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      max-width:63ch; margin:40px auto; padding:24px;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); box-shadow:var(--shadow);
     }
-
-    /* Table */
-    table{width:100%; border-collapse: collapse; margin-top:20px}
-    th, td{padding: 15px; border-bottom:1px solid #ccc; text-align:left}
-    th{background: var(--brand); color:#fff}
-    tr:nth-child(even){background:#f2f2f2}
-
-    /* Forms */
-    form{margin-top:30px; text-align:center}
+    form{ margin-top:30px; text-align:center; }
     textarea{
-      width: 95%;
-      max-width: none;
-      height: 150px;
-      padding: 12px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      resize: vertical;
-      margin-bottom: 10px;
-      box-sizing: border-box;
-      display:block;
-      margin-left:auto; margin-right:auto;
+      width:95%; height:150px; padding:12px; font-size:1rem;
+      border:1px solid #ccc; border-radius:6px; resize:vertical;
+      margin-bottom:10px; box-sizing:border-box; display:block; margin-left:auto; margin-right:auto;
     }
-    input[type="email"]{
-      width:70%; max-width:400px;
-      padding:10px; font-size:1rem;
-      border:1px solid #ccc; border-radius:6px; margin-right:10px;
-    }
-    button{
-      background: var(--brand); color:#fff;
-      padding:12px 24px; border:none; border-radius:6px;
-      font-size:1rem; cursor:pointer; margin-top:5px;
-    }
-    button:hover{background:#003a53}
-
-    /* Footer */
-    footer{
-      max-width: var(--content);
-      margin: 0 auto 40px;
-      padding: 20px;
-      font-size: 0.9rem;
-      background: #eee;
-      color: #666;
-      text-align: center;
-      border-radius: 8px;
-    }
-
-    /* Helpers */
+    input[type="email"]{ width:70%; max-width:400px; padding:10px; font-size:1rem; border:1px solid #ccc; border-radius:6px; margin-right:10px; }
+    button{ background:var(--brand); color:#fff; padding:12px 24px; border:none; border-radius:6px; font-size:1rem; cursor:pointer; margin-top:5px; }
+    button:hover{ background:#003a53; }
+    footer{ max-width:var(--content); margin:0 auto 40px; padding:20px; font-size:.9rem; background:#eee; color:#666; text-align:center; border-radius:8px; }
     .center-links{ text-align:center }
-    .center-links img{ vertical-align: middle }
+    .center-links img{ vertical-align:middle }
     .center-links a{ margin-left:6px }
   </style>
 </head>
 <body>
-
   <header>
     <div class="site-title">
-      <!-- IMPORTANT:
-           If the file is in /public/, use src="/locallyconvert-logo-560.png"
-           If it sits next to this HTML, use src="./locallyconvert-logo-560.png"
-      -->
-      <img
-        src="/assets/locallyconvert-logo-560.png"
-        alt="Get WorkWise — Neurodivergent Support for the Workplace"
-      />
+      <!-- Robust image tag with multi-path fallback and optional HiDPI swap when available -->
+      <img id="logo"
+           src="locallyconvert-logo-560.png"
+           alt="Get WorkWise — Neurodivergent Support for the Workplace" />
     </div>
-
     <p>Your communication ally in the workplace.</p>
-
     <nav>
       <a href="#problem">Why</a>
       <a href="#solution">What</a>
@@ -176,7 +84,6 @@
     <a href="Survey4.html">Dyslexia Survey Based on the Adult Dyslexia Questionnaire</a>
   </p>
 
-  <!-- Neurodivergent Definition Box -->
   <section class="card">
     <h2>What We Mean by <em>Neurodivergent</em></h2>
     <p style="line-height:1.6;color:#24364a;font-size:1.05em;">
@@ -242,51 +149,51 @@
   </section>
 
   <footer class="footer">
-    &copy; 2025 WorkWise – Built with purpose and care. Contact: hello@getworkwise.tech
+    &copy; 2025 WorkWise – Built with purpose and care<br/>
+    Contact: hello@getworkwise.tech
   </footer>
 
-  <!-- Optional: add HiDPI once confirmed the 2x file exists at EXACT path/case
   <script>
-    // If you prefer srcset after it works:
-    // document.querySelector('.site-title img').setAttribute(
-    //   'srcset',
-    //   '/assets/locallyconvert-logo-560.png 1x, /assets/locallyconvert-logo-1120.png 2x'
-    // );
+    // Fallbacks for different possible image locations (no /public folder)
+    (function(){
+      const paths = [
+        "locallyconvert-logo-560.png",
+        "./locallyconvert-logo-560.png",
+        "assets/locallyconvert-logo-560.png",
+        "./assets/locallyconvert-logo-560.png",
+        "/assets/locallyconvert-logo-560.png"
+      ];
+      const hidpi = [
+        "locallyconvert-logo-1120.png",
+        "./locallyconvert-logo-1120.png",
+        "assets/locallyconvert-logo-1120.png",
+        "./assets/locallyconvert-logo-1120.png",
+        "/assets/locallyconvert-logo-1120.png"
+      ];
+      const img = document.getElementById('logo');
+
+      // Try each path until one loads
+      function tryPaths(list, cb){
+        if(!list.length) return cb(false);
+        const url = list.shift();
+        const test = new Image();
+        test.onload = function(){ cb(url); };
+        test.onerror = function(){ tryPaths(list, cb); };
+        test.src = url + "?v=" + Date.now(); // bust cache
+      }
+
+      // 1) Find a working 560 path
+      tryPaths(paths.slice(), function(url){
+        if(url) img.src = url;
+
+        // 2) If HiDPI, try to swap to a valid 1120 asset
+        if(window.devicePixelRatio && window.devicePixelRatio >= 1.5){
+          tryPaths(hidpi.slice(), function(hd){
+            if(hd) img.src = hd;
+          });
+        }
+      });
+    })();
   </script>
-  -->
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
