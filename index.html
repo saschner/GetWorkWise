@@ -23,11 +23,12 @@
     }
     /* The logo: no limits, fill screen width if possible */
     #logo {
-      display: block;
-      width: 100%;     /* always full width of screen */
-      height: auto;    /* keep aspect ratio */
-      margin: 0 auto;
-    }
+  display: block;
+  width: 100%;     /* full width on phones */
+  height: auto;
+  margin: 0 auto;
+  max-width: 560px; /* never exceed this on larger screens */
+}
     nav { margin-top: 10px; }
     nav a {
       color: #aee8ff;
