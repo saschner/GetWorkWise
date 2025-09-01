@@ -96,6 +96,17 @@
       text-align: center;
       border-radius: 8px;
     }
+.container {
+  width: 90%;          /* phones & small screens */
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 50%;        /* tablets & desktops */
+    max-width: 900px;  /* keeps it from stretching too wide */
+  }
+}
     .center-links { text-align: center; }
     .center-links img { vertical-align: middle; }
     .center-links a { margin-left: 6px; }
