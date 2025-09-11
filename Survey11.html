@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adult ADHA Questionnaire — 18 Items</title>
+  <meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7fbff; --card:#fff; --border:#dfeaf6; --text:#1d2a38; --muted:#6a86a7;
+      --radius:14px; --shadow:0 8px 22px rgba(28,53,84,.12);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; padding:22px; font-family: Garamond, Tahoma, Verdana, sans-serif; background:var(--bg); color:var(--text)}
+    .container{max-width:900px;margin:0 auto}
+    h1{margin:0 0 18px 0; font-size:clamp(30px,4.5vw,42px)}
+    h2{margin:0 0 18px 0; font-size:clamp(24px,4vw,36px)}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin:12px 0; font-size:16px; font-family: Garamond, Tahoma, Verdana, sans-serif;}
+    .question{padding:14px; border:1px solid var(--border); border-radius:12px; margin:14px 0; background:#fff; font-family: Garamond, Tahoma, Verdana, sans-serif;}
+    .q-head{display:flex; align-items:baseline; gap:10px; margin-bottom:6px; font-family: Garamond, Tahoma, Verdana, sans-serif;}
+    .q-index{font-weight:400; color:#2b507c; font-family: Garamond, Tahoma, Verdana, sans-serif;}
+    .q-title{font-size:18px; font-weight:800; font-family: Garamond, Tahoma, Verdana, sans-serif;}
+    .q-prompt{margin:8px 0 8px 0; font-family: Garamond, Tahoma, Verdana, sans-serif; color:#24364a;}
+    label{display:inline-flex; align-items:center; gap:8px; margin:6px 12px 6px 0; cursor:pointer; font-size:18px; font-family: Garamond, Tahoma, Verdana, sans-serif}
+    .muted{font-size:18px; color:var(--muted); font-family: Garamond, Tahoma, Verdana, sans-serif;}
+    .hr{height:1px; background:var(--border); margin:16px 0}
+    .controls{display:flex; gap:12px; flex-wrap:wrap}
+    button{appearance:none; border:1px solid var(--border); background:#f0f6ff; color:#204a8b; padding:10px 14px; border-radius:12px; cursor:pointer; font-family: Garamond, Tahoma, Verdana, sans-serif;}
+    .warn{background:#fff3f1; color:#7a2f28}
+    .mulish-.question {
+      font-family: "Mulish", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 200;
+      font-style: normal;
+    }
+    
+    /* Mobile styles - Using more specific selectors and larger fonts */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 16px;
+        font-size: 18px;
+      }
+      
+      .container {
+        padding: 0;
+      }
+      
+      h2 {
+        font-size: 28px !important;
+        line-height: 1.3;
+      }
+      
+      .question .q-index {
+        font-size: 24px !important;
+        font-weight: bold !important;
+      }
+      
+      .question .q-title {
+        font-size: 24px !important;
+        font-weight: bold !important;
+        line-height: 1.3 !important;
+      }
+      
+      .question .q-prompt {
+        font-size: 20px !important;
+        line-height: 1.4 !important;
+        margin: 12px 0 16px 0 !important;
+      }
+      
+      .question label {
+        font-size: 22px !important;
+        margin: 10px 8px 10px 0 !important;
+        min-height: 48px !important;
+        padding: 8px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+      }
+      
+      .question input[type="radio"] {
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 12px !important;
+        transform: scale(1.5) !important;
+        flex-shrink: 0;
+      }
+      
+      .question {
+        padding: 20px !important;
+        margin: 18px 0 !important;
+      }
+      
+      .q-head {
+        margin-bottom: 15px !important;
+      }
+      
+      button {
+        font-size: 20px !important;
+        padding: 15px 20px !important;
+        min-height: 52px !important;
+      }
+      
+      .muted {
+        font-size: 18px !important;
+      }
+    }
+    
+    /* Extra small mobile screens */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0;
+      }
+      
+      .card {
+        margin: 8px 0;
+        padding: 12px;
+      }
+      
+      .question {
+        padding: 16px;
+      }
+      
+      label {
+        display: flex;
+        width: 100%;
+        margin: 6px 0;
+        padding: 8px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+      }
+      
+      input[type="radio"] {
+        margin-right: 16px;
+      }
+      
+      .controls {
+        flex-direction: column;
+      }
+      
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Adult ADHA Questionnaire — 18 Items</h2>
+    <form class="card">
+      <!-- ===== ITEM 1 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">1.</span>
+          <span class="q-title">Carelessness</span>
+        </div>
+        <div class="q-prompt">Do you make silly mistakes?<BR>Rush through your work?<BR>Are you messy? Unable to find things?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q1" value="0"> None</label>
+          <label><input type="radio" name="q1" value="1"> Mild</label>
+          <label><input type="radio" name="q1" value="2"> Moderate</label>
+          <label><input type="radio" name="q1" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 2 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">2.</span>
+          <span class="q-title">Sustaining Attention</span>
+        </div>
+        <div class="q-prompt">Do you have trouble remembering what was said or what you have read?<BR>Does it take you longer to do things because you cannot keep your mind on the task?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q2" value="0"> None</label>
+          <label><input type="radio" name="q2" value="1"> Mild</label>
+          <label><input type="radio" name="q2" value="2"> Moderate</label>
+          <label><input type="radio" name="q2" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 3 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">3.</span>
+          <span class="q-title">Trouble Listening</span>
+        </div>
+        <div class="q-prompt">Do you have to ask people to repeat directions to get something done?<BR>Do people complain that you seem to daydream instead of listen?<BR>When trying to remember, do you realize you've missed key parts of what was said?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q3" value="0"> None</label>
+          <label><input type="radio" name="q3" value="1"> Mild</label>
+          <label><input type="radio" name="q3" value="2"> Moderate</label>
+          <label><input type="radio" name="q3" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 4 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">4.</span>
+          <span class="q-title">Completing Tasks</span>
+        </div>
+        <div class="q-prompt">Do you to forget to finish what you were doing?<BR>Do you need a deadline to be able to finish your work?<BR>Do you return to a room you've been in and realize you've left things out or opened?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q4" value="0"> None</label>
+          <label><input type="radio" name="q4" value="1"> Mild</label>
+          <label><input type="radio" name="q4" value="2"> Moderate</label>
+          <label><input type="radio" name="q4" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 5 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">5.</span>
+          <span class="q-title">Trouble Organizing</span>
+        </div>
+        <div class="q-prompt">Do you have trouble breaking down tasks into orderded steps?<BR> Do you have trouble with time management?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q5" value="0"> None</label>
+          <label><input type="radio" name="q5" value="1"> Mild</label>
+          <label><input type="radio" name="q5" value="2"> Moderate</label>
+          <label><input type="radio" name="q5" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 6 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">6.</span>
+          <span class="q-title">Avoids Lengthy Tasks</span>
+        </div>
+        <div class="q-prompt">Do you have trouble with particularly long tasks or board games? <BR>Do you tend to avoid them or feel better about shorter tasks?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q6" value="0"> None</label>
+          <label><input type="radio" name="q6" value="1"> Mild</label>
+          <label><input type="radio" name="q6" value="2"> Moderate</label>
+          <label><input type="radio" name="q6" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 7 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">7.</span>
+          <span class="q-title">Loses Items</span>
+        </div>
+        <div class="q-prompt">Do you often misplace your keys, wallet or papers? <BR>Are you constantly looking for things? Does this cause you trouble?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q7" value="0"> None</label>
+          <label><input type="radio" name="q7" value="1"> Mild</label>
+          <label><input type="radio" name="q7" value="2"> Moderate</label>
+          <label><input type="radio" name="q7" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 8 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">8.</span>
+          <span class="q-title">Easily Distractable</span>
+        </div>
+        <div class="q-prompt">Do you get pulled away from things you are doing? <BR>Do you start new tasks before several others are complete?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q8" value="0"> None</label>
+          <label><input type="radio" name="q8" value="1"> Mild</label>
+          <label><input type="radio" name="q8" value="2"> Moderate</label>
+          <label><input type="radio" name="q8" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 9 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">9.</span>
+          <span class="q-title">Forgetful in Daily Activities</span>
+        </div>
+        <div class="q-prompt">Do you find it difficult to stick to a daily routine?<BR>Do you forget to bring important work materials or assignments with you?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q9" value="0"> None</label>
+          <label><input type="radio" name="q9" value="1"> Mild</label>
+          <label><input type="radio" name="q9" value="2"> Moderate</label>
+          <label><input type="radio" name="q9" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 10 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">10.</span>
+          <span class="q-title">Fidgety</span>
+        </div>
+        <div class="q-prompt">Can you sit still or do you need to be shaking your foot or otherwise moving? Are you always playing with your hair, clothing or items?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q10" value="0"> None</label>
+          <label><input type="radio" name="q10" value="1"> Mild</label>
+          <label><input type="radio" name="q10" value="2"> Moderate</label>
+          <label><input type="radio" name="q10" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 11 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">11.</span>
+          <span class="q-title">Trouble sitting</span>
+        </div>
+        <div class="q-prompt">When seated, do you often pop up to look at things or brouse? Would you rather be walking than sitting? <BR>If you must stay seated do you need to constantly remind yourself as such?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q11" value="0"> None</label>
+          <label><input type="radio" name="q11" value="1"> Mild</label>
+          <label><input type="radio" name="q11" value="2"> Moderate</label>
+          <label><input type="radio" name="q11" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 12 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">12.</span>
+          <span class="q-title">Runs and Climbs</span>
+        </div>
+        <div class="q-prompt">Are you physically restless? Do you feel agitated if you cannot excercise?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q12" value="0"> None</label>
+          <label><input type="radio" name="q12" value="1"> Mild</label>
+          <label><input type="radio" name="q12" value="2"> Moderate</label>
+          <label><input type="radio" name="q12" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 13 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">13.</span>
+          <span class="q-title">Cannot Work Quietly</span>
+        </div>
+        <div class="q-prompt">Do you have a hard time working quietly? Would you rather be talking or reading to yourself?<BR>Do you work better with background noise such as music or the TV?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q13" value="0"> None</label>
+          <label><input type="radio" name="q13" value="1"> Mild</label>
+          <label><input type="radio" name="q13" value="2"> Moderate</label>
+          <label><input type="radio" name="q13" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 14 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">14.</span>
+          <span class="q-title">Always on the Go</span>
+        </div>
+        <div class="q-prompt">Do you feel unable to relax and do nothing? Is it hard for you to adjust to a slower pace?<BR>Are you always up and on the go, looking for the next thing that will interest you?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q14" value="0"> None</label>
+          <label><input type="radio" name="q14" value="1"> Mild</label>
+          <label><input type="radio" name="q14" value="2"> Moderate</label>
+          <label><input type="radio" name="q14" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 15 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">15.</span>
+          <span class="q-title">Talks Excessively</span>
+        </div>
+        <div class="q-prompt">Do you talk a lot? All the time? Do people complain about your excessive talking?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q15" value="0"> None</label>
+          <label><input type="radio" name="q15" value="1"> Mild</label>
+          <label><input type="radio" name="q15" value="2"> Moderate</label>
+          <label><input type="radio" name="q15" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 16 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">16.</span>
+          <span class="q-title">Blurts Out Answers</span>
+        </div>
+        <div class="q-prompt">Do you give answers to quesstions before the person is finished asking?<BR>Do you say things without thinking? Do you speak before it is your turn?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q16" value="0"> None</label>
+          <label><input type="radio" name="q16" value="1"> Mild</label>
+          <label><input type="radio" name="q16" value="2"> Moderate</label>
+          <label><input type="radio" name="q16" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 17 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">17.</span>
+          <span class="q-title">Can't Wait for Turn</span>
+        </div>
+        <div class="q-prompt">Is it hard for you to wait for your turn while driving or have a discussion?<BR>Are you severely frustrated with delays? Does it cause problems?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q17" value="0"> None</label>
+          <label><input type="radio" name="q17" value="1"> Mild</label>
+          <label><input type="radio" name="q17" value="2"> Moderate</label>
+          <label><input type="radio" name="q17" value="3"> Severe</label>
+        </div>
+      </div>
+
+      <!-- ===== ITEM 18 ===== -->
+      <div class="question">
+        <div class="q-head">
+          <span class="q-index">18.</span>
+          <span class="q-title">Interrupts Others</span>
+        </div>
+        <div class="q-prompt">Do you talk while others are talking? Do you but into other people's conversations?<BR>Is it hard for you to wait to get your point across in conversations or a meeting?</div>
+        <div role="radiogroup" aria-label="Response options">
+          <label><input type="radio" name="q18" value="0"> None</label>
+          <label><input type="radio" name="q18" value="1"> Mild</label>
+          <label><input type="radio" name="q18" value="2"> Moderate</label>
+          <label><input type="radio" name="q18" value="3"> Severe</label>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div class="muted">Private/Internal use only. Do not include proprietary content unless permitted.</div>
+      <div class="controls">
+        <button type="button" onclick="window.print()">Print</button>
+        <button type="reset" class="warn">Clear selections</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
